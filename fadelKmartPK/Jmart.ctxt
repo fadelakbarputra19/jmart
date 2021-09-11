@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Jmart
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jmart\ here.\r\n\r\n\ @author\ Muhammad\ Fadel\ Akbar\ Putra\r\n\ @version\ 11-09-2021\r\n
+comment1.params=
+comment1.target=int\ getPromo()
+comment2.params=
+comment2.target=java.lang.String\ getCustomer()
+comment3.params=before\ after
+comment3.target=float\ getDiscountPercentage(int,\ int)
+comment3.text=\r\n\ Method\ getDiscountPercentage\r\n
+comment4.params=price\ discountPercentage
+comment4.target=int\ getDiscountedPrice(int,\ float)
+comment4.text=\r\n\ Method\ getDiscountedPrice\r\n
+comment5.params=
+comment5.target=float\ getCommissionMultiplier()
+comment5.text=\r\n\ Method\ getCommissionMultiplier\r\n
+comment6.params=price
+comment6.target=int\ getAdjustedPrice(int)
+comment6.text=\r\n\ Method\ getAdjustedPeice\r\n
+comment7.params=price
+comment7.target=int\ getAdminFee(int)
+comment7.text=\r\n\ Method\ getAdminFee\r\n
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9
