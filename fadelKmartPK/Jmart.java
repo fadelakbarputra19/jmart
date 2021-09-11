@@ -9,16 +9,18 @@ package fadelKmartPK;
  */
 public class Jmart
 {
-      public int getPromo(){
-           return 0;
-       }
+     
        public String getCustomer(){
            return "oop";
+       }
+       
+        public static int getPromo(){
+           return 0;
        }
        /**
         * Method getDiscountPercentage
         */
-       public float getDiscountPercentage(int before, int after){
+       public static float getDiscountPercentage(int before, int after){
            if(before < after){
                return 0.0f;
             }
@@ -30,7 +32,7 @@ public class Jmart
        /**
         * Method getDiscountedPrice
         */
-       public int getDiscountedPrice(int price, float discountPercentage){
+       public static int getDiscountedPrice(int price, float discountPercentage){
            if(discountPercentage > 100.0f){
                return 0;
            }else{
@@ -41,20 +43,20 @@ public class Jmart
     /**
      * Method getCommissionMultiplier
      */
-        public float getCommissionMultiplier(){
+        public static float getCommissionMultiplier(){
         return 0.05f;
         }   
         
     /**
      * Method getAdjustedPeice
      */
-        public int getAdjustedPrice(int price){
+        public static int getAdjustedPrice(int price){
             return (int) (price + (0.05 * price));
     }
     /**
      * Method getAdminFee
      */
-        public int getAdminFee(int price){
+        public static int getAdminFee(int price){
             return (price * 005);
     }
      public static void main(String[] args){

@@ -2,9 +2,9 @@
 comment0.target=Jmart
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jmart\ here.\r\n\r\n\ @author\ Muhammad\ Fadel\ Akbar\ Putra\r\n\ @version\ 11-09-2021\r\n
 comment1.params=
-comment1.target=int\ getPromo()
+comment1.target=java.lang.String\ getCustomer()
 comment2.params=
-comment2.target=java.lang.String\ getCustomer()
+comment2.target=int\ getPromo()
 comment3.params=before\ after
 comment3.target=float\ getDiscountPercentage(int,\ int)
 comment3.text=\r\n\ Method\ getDiscountPercentage\r\n
