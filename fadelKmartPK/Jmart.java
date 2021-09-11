@@ -40,6 +40,14 @@ public class Jmart
             }
        }
        
+       /**
+        * Method getOriginalPrice
+        */
+           
+        public static int getOriginalPrice(int discountedPrice, float discountPercentage){
+            return (int) (discountedPrice/ (1 - (discountPercentage/100)));
+        }
+        
     /**
      * Method getCommissionMultiplier
      */
