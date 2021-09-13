@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=Jmart
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jmart\ here.\r\n\r\n\ @author\ Muhammad\ Fadel\ Akbar\ Putra\r\n\ @version\ 11-09-2021\r\n
+comment0.text=\r\n\ <h1>JMart\ Program<h1>\r\n\r\n\ @author\ Muhammad\ Fadel\ Akbar\ Putra\r\n\ @version\ 11-09-2021\r\n
 comment1.params=
 comment1.target=java.lang.String\ getCustomer()
+comment1.text=\r\n\ Method\ getCustomer\r\n
 comment2.params=
 comment2.target=int\ getPromo()
+comment2.text=\r\n\ Method\ getPromo\r\n
 comment3.params=before\ after
 comment3.target=float\ getDiscountPercentage(int,\ int)
 comment3.text=\r\n\ Method\ getDiscountPercentage\r\n
@@ -25,4 +27,5 @@ comment8.target=int\ getAdminFee(int)
 comment8.text=\r\n\ Method\ getAdminFee\r\n
 comment9.params=args
 comment9.target=void\ main(java.lang.String[])
+comment9.text=\r\n\ Main\ \r\n
 numComments=10
