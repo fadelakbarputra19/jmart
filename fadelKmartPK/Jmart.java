@@ -30,11 +30,11 @@ public class Jmart
     */
     public static float getDiscountPercentage(int before, int after)
     {
-        if(before < after){
+        if(before <= after){
             return 0.0f;
         }
         else{
-            return before - after;
+            return (float) (before - after) / before * 100;
         }
     }
 
@@ -71,7 +71,7 @@ public class Jmart
     */
     public static int getAdjustedPrice(int price)
     {
-        return (int) (price + (0.05 * price));
+        return (int) (price + (getCommissionMultiplier() * price));
     }
         
     /**
@@ -79,7 +79,7 @@ public class Jmart
     */
     public static int getAdminFee(int price)
     {
-        return (price * 005);
+        return (int) (price * getCommissionMultiplier());
     }
         
     /**
@@ -87,7 +87,7 @@ public class Jmart
     */
     public static void main(String[] args)
     {
-        System.out.println("Halo");
+       
     }
 }  
   
