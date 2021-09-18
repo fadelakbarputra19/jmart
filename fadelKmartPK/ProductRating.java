@@ -30,7 +30,7 @@ public class ProductRating
         return (double) total / count;
    }
    
-   public long getCunt()
+   public long getCount()
    {
        return count;
    }
