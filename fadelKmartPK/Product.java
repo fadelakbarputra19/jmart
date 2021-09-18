@@ -20,6 +20,7 @@ public class Product
     
     public Product(String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
     {
+        this.id = idCounter++;
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
