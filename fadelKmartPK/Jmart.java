@@ -13,7 +13,7 @@ public class Jmart
     Product product;
     public static Product create(Product product)
     {   
-        return new Product("Manga", 1, false, new PriceTag(20000), ProductCategory.BOOK, new ProductRating());
+        return new Product("Manga", 1, false, new PriceTag(20000), ProductCategory.BOOK);
     }
     
     /**
