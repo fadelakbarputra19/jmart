@@ -81,7 +81,13 @@ public class Jmart
     {
         return (int) (price * getCommissionMultiplier());
     }
-        
+    
+    Product product;
+    public static Product create(Product product)
+    {   
+        return null;
+    }
+    
     /**
     * Main 
     */
