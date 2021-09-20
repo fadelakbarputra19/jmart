@@ -9,7 +9,7 @@ package fadelKmartPK;
  */
 public class Product
 {
-    private static int idCounter;
+    private static int idCounter = 0;
     public int id;
     public String name;
     public int weight;
@@ -18,7 +18,7 @@ public class Product
     public ProductCategory category;
     public ProductRating productRating;
     
-    public Product(String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
+    public Product(int id, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category)
     {
         this.id = idCounter++;
         this.name = name;

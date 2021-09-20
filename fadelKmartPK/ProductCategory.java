@@ -33,8 +33,5 @@ public enum ProductCategory
     TRAVEL,
     WEDDING;
     
-    ProductCategory()
-    {
         
-    }
 }
