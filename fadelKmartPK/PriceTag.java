@@ -40,14 +40,19 @@ public class PriceTag
     */
    public double getAdminFee()
    {
-       if (getDiscountedPrice() < BOTTOM_PRICE) return BOTTOM_FEE;
-       return COMMISSION_MULTIPLIER * getDiscountedPrice();
+       if (getDiscountedPrice() < BOTTOM_PRICE){
+        return BOTTOM_FEE;
+       } 
+       else{
+        return COMMISSION_MULTIPLIER * getDiscountedPrice();
+       }
+       
    }
    
    /*
     * Method untuk getDiscountedPrice
     */
-   private double getDiscountedPrice()
+   public double getDiscountedPrice()
    {
        if(discount > 100.0)
        {

@@ -31,7 +31,5 @@ public enum ProductCategory
     MISCELLANEOUS,
     PROPERTY,
     TRAVEL,
-    WEDDING;
-    
-        
+    WEDDING; 
 }
