@@ -21,7 +21,10 @@ public class Jmart
     {   
         return null;
     }
-    
+      public static ShipmentDuration createCoupon(Coupon coupon)
+    {   
+        return null;
+    }
     /**
     * Main 
     */
