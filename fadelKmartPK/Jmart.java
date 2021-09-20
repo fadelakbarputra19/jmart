@@ -16,10 +16,7 @@ public class Jmart
     {   
         return new Product(12012, "Manga", 1, false, new PriceTag(20000), ProductCategory.BOOK);
     }
-    public static Coupon createCoupon(Coupon coupon)
-    {   
-        return new Coupon("XX", Type.REVERB, 10.0, 20000);
-    }
+    
     public static ShipmentDuration createShipmentDuration(ShipmentDuration shipmentDuration)
     {   
         return null;

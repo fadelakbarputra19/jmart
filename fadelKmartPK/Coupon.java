@@ -10,7 +10,7 @@ package fadelKmartPK;
 public class Coupon
 {
    public final String name;
-   public final double cut;
+   public  double cut;
    public final Type type;
    public final double minimum;
    private boolean used;
@@ -52,27 +52,16 @@ public class Coupon
 
        switch (type) {
            case REBATE:
-            if (priceTag.getAdjustedPrice() >= cut) {
-                return 0.0;
-            }
-            else{
-                return priceTag.getAdjustedPrice() - cut;
-            }
+                if (priceTag.getAdjustedPrice() >= cut) {
+                    return 0.0;
+                }
+                else{
+                    return priceTag.getAdjustedPrice() - cut;
+                }
            case DISCOUNT:
-            cut = cut /100;
-            return priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * cut;
+                cut = cut /100;
+                return ( double)priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * cut;
        }
-
-
-       if(type = TY)
-       {
-           cut = cut/100;
-           return cut;
-       }
-       else if(type = Type.REBATE){
-           cut = cut - priceTag.getAdjustedPrice();
-           return cut;
-       }
-       return priceTag.getAdjustedPrice() - cut;
-   }
+        return ( double)priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * cut;
+    }
 }
