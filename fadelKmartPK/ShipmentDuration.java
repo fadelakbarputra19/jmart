@@ -19,10 +19,10 @@ public class ShipmentDuration
         this.bit = bit;
    }
    public ShipmentDuration(ShipmentDuration...args){
-        ShipmentDuration.KARGO = 16;
+        //ShipmentDuration.KARGO = 16;
         
    }
-   public isDuration(ShipmentDuration reference){
-        
+   public boolean isDuration(ShipmentDuration reference){
+        return true;
    }
 }
