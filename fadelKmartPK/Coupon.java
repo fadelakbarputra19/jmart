@@ -10,24 +10,25 @@ package fadelKmartPK;
 public class Coupon
 {
    public final String name;
-   public  double cut;
+   public final int code;
+   public final double cut;
    public final Type type;
    public final double minimum;
    private boolean used;
        
-   public Coupon (String name, Type type, double cut, double minimum)
+   public Coupon (String name, int code, Type type, double cut, double minimum)
    {    
        this.name = name;
+       this.code = code;
        this.type = type;
        this.cut = cut;
        this.minimum = minimum;
        this.used = false;
    }
    
-     enum Type{
+    enum Type{
         DISCOUNT,
         REBATE;
-
     }   
 
    public boolean isUsed()
@@ -48,20 +49,15 @@ public class Coupon
    
    public double apply(PriceTag priceTag)
    {
-       this.used = true;
-
-       switch (type) {
-           case REBATE:
-                if (priceTag.getAdjustedPrice() >= cut) {
-                    return 0.0;
-                }
-                else{
-                    return priceTag.getAdjustedPrice() - cut;
-                }
-           case DISCOUNT:
-                cut = cut /100;
-                return ( double)priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * cut;
-       }
-        return ( double)priceTag.getAdjustedPrice() - priceTag.getAdjustedPrice() * cut;
+        used = true;
+        if (type == Type.DISCOUNT)
+        {
+            return (priceTag.getAdjustedPrice() - (priceTag.getAdjustedPrice() * cut/100));
+        }
+        else
+        {
+            return priceTag.getAdjustedPrice() - cut;   
+        }
+          
     }
 }
