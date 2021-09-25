@@ -26,7 +26,7 @@ public class Coupon
        this.used = false;
    }
    
-    enum Type{
+    public enum Type{
         DISCOUNT,
         REBATE;
     }   
@@ -52,11 +52,11 @@ public class Coupon
         used = true;
         if (type == Type.DISCOUNT)
         {
-            return (priceTag.getAdjustedPrice() - (priceTag.getAdjustedPrice() * cut/100));
+            return (priceTag.getAdjustedPrice() * ((100 - cut) / 100));
         }
         else
         {
-            return priceTag.getAdjustedPrice() - cut;   
+            return (priceTag.getAdjustedPrice() - cut);   
         }
           
     }

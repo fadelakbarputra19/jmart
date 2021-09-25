@@ -19,11 +19,11 @@ public class Jmart
     
     public static ShipmentDuration createShipmentDuration(ShipmentDuration shipmentDuration)
     {   
-        return null;
+        return new ShipmentDuration(ShipmentDuration.SAME_DAY, ShipmentDuration.NEXT_DAY);
     }
-      public static ShipmentDuration createCoupon(Coupon coupon)
+      public static Coupon createCoupon(Coupon coupon)
     {   
-        return null;
+        return new Coupon("My kupon", 11111, Coupon.Type.REBATE, 100000, 500000);
     }
     /**
     * Main 

@@ -40,11 +40,12 @@ public class PriceTag
     */
    public double getAdminFee()
    {
-       if (getDiscountedPrice() < BOTTOM_PRICE){
+       double discountedPrice = getDiscountedPrice();
+       if (discountedPrice < BOTTOM_PRICE){
         return BOTTOM_FEE;
        } 
        else{
-        return COMMISSION_MULTIPLIER * getDiscountedPrice();
+        return COMMISSION_MULTIPLIER * discountedPrice;
        }
        
    }
@@ -54,17 +55,14 @@ public class PriceTag
     */
    public double getDiscountedPrice()
    {
-       if(discount > 100.0)
+       if(discount >= 100.0)
        {
-            return 0.0;
-       }
-       else if(discount == 100)
-       {    
             return 0.0;
        }
        else 
        {
-            return price - (price * discount);
+            double cut = price * discount / 100;
+            return price - cut;
        }
    }
 

@@ -9,20 +9,24 @@ package fadelKmartPK;
  */
 public class ShipmentDuration
 {
-    public static final ShipmentDuration SAME_DAY = new ShipmentDuration(1 << 1);
-    public static final ShipmentDuration NEXT_DAY = new ShipmentDuration(1 << 2);
-    public static final ShipmentDuration REGULER = new ShipmentDuration(1 << 3);
-    public static final ShipmentDuration KARGO = new ShipmentDuration(1 << 4);
-    private int bit;
+    public static final ShipmentDuration SAME_DAY = new ShipmentDuration((byte)(1 << 1));
+    public static final ShipmentDuration NEXT_DAY = new ShipmentDuration((byte)(1 << 2));
+    public static final ShipmentDuration REGULER = new ShipmentDuration((byte)(1 << 3));
+    public static final ShipmentDuration KARGO = new ShipmentDuration((byte)(1 << 4));
+    private final byte bit;
 
-   private ShipmentDuration(int bit){
+   private ShipmentDuration(byte bit){
         this.bit = bit;
    }
-   public ShipmentDuration(ShipmentDuration...args){
-        //ShipmentDuration.KARGO = 16;
-        
+   public ShipmentDuration(ShipmentDuration...args)
+   {
+       byte flags = 0;
+       for (byte i = 0; i < args.length; i++) {
+           flags |= args[i].bit;
+       }
+       bit = flags; 
    }
    public boolean isDuration(ShipmentDuration reference){
-        return true;
+        return (bit & reference.bit) != 0;
    }
 }
