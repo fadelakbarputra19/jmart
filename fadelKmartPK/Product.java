@@ -37,5 +37,9 @@ public class Product extends Recognizable implements FileParser
     public boolean read(String content){
         return false;
     }
+    
+   public String toString(){
+        return "name: " + this.name + "\nweight: " + this.weight + "\nconditionUsed: " + this.conditionUsed + "\npriceTag: " + this.priceTag + "\nCategory: " + this.category + "\nRating: " + this.rating + "\nstoreId: " + this.storeId;
+    }
 }
 
