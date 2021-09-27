@@ -7,32 +7,26 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Payment extends Transaction implements FileParser
+public class Payment extends Invoice implements Transactor
 {
    public int productId;
-   public ShipmentDuration shipmentDuration;
+   public Shipment shipment;
    
-   public Payment(int id, int buyerId, Product product, ShipmentDuration shipmentDuration){
-       super(id, buyerId, product.storeId);
-       this.productId = product.id;
-       this.shipmentDuration = shipmentDuration;
-   }
-   
-   public Payment(int id, int buyerId, int storeId, int productId, ShipmentDuration shipmentDuration){
+   public Payment(int id, int buyerId, int storeId, int productId, Shipment shipment){
         super(id, buyerId, storeId);
         this.productId = productId;
-        this.shipmentDuration = shipmentDuration;
-   }
-   
-   public boolean read(String content) {
-       return false;
+        this.shipment = shipment;
    }
    
    public boolean validate(){
         return false;
     }
     
-    public Transaction perform(){
+    public Invoice perform(){
         return null;
+    }
+    
+    public  double getTotalPay(){
+        return 0.0;
     }
 }

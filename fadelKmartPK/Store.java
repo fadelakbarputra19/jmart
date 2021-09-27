@@ -31,12 +31,4 @@ public class Store extends Recognizable implements FileParser
    public boolean read(String content) {
        return false;
    }
-   
-   public Object write(){
-        return null;
-   }
-    
-   public Object newInstance(String content){
-        return null;
-   }
 }

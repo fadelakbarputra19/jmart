@@ -20,15 +20,8 @@ public class Account extends Recognizable implements FileParser
         this.password = password;
     }
     
+    @Override
     public boolean read(String content){
         return false;
-    }
-    
-    public Object write(){
-        return null;
-    }
-    
-    public Object newInstance(String content){
-        return null;
     }
 }

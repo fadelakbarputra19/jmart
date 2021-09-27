@@ -7,7 +7,7 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Recognizable
+public abstract class Recognizable
 {
   public final int id;
   
@@ -21,11 +21,6 @@ public class Recognizable
   }
   
   public boolean equals(Recognizable recognizable ){
-      if(recognizable.id == id){
-            return true; 
-      }
-      else{
-          return false;
-      }
+     return recognizable.id == id;
   }
 }
