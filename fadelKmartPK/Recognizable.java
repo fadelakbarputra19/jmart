@@ -17,10 +17,15 @@ public abstract class Recognizable
   }
   
   public boolean equals(Object object){
-      return object instanceof Recognizable && ((Recognizable) object).id == id;
+      if(object instanceof Recognizable){
+          return equals(object);
+      }
+      else{
+        return false;
+      }
   }
   
-  public boolean equals(Recognizable recognizable ){
-     return recognizable.id == id;
+  public boolean equals(Recognizable recognizable){
+     return this.id == recognizable.id; 
   }
 }

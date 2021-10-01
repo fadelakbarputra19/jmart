@@ -9,16 +9,19 @@ package fadelKmartPK;
  */
 public class Complaint extends Recognizable implements FileParser
 {
-    public String date;
+    public String date = "Sabtu";
     public String desc;
     
     public Complaint(int id, String desc){
         super(id);
-        this.date = "date";
         this.desc = desc;
     }
     
     public boolean read(String content){
         return false;
+    }
+
+    public Object write(){
+        return null;
     }
 }

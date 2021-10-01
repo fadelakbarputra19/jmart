@@ -22,10 +22,14 @@ public class Account extends Recognizable implements FileParser
     
     @Override
     public boolean read(String content){
-        return false;
+        return true;
     }
     
     public String toString(){
         return "name: " + name + "\nemail: " + email + "\npassword: " + password;
+    }
+
+    public Object write(){
+        return null;
     }
 }

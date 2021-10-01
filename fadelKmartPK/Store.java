@@ -35,4 +35,8 @@ public class Store extends Recognizable implements FileParser
    public String toString(){
        return "name: " + name + "\naddress: " + address + "\nphoneNumber: " + number;
    }
+
+   public Object write(){
+       return null;
+   }
 }

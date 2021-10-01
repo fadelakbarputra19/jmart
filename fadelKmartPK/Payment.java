@@ -29,4 +29,9 @@ public class Payment extends Invoice implements Transactor
     public  double getTotalPay(){
         return 0.0;
     }
+
+    @Override
+    public Object write() {
+        return null;
+    }
 }

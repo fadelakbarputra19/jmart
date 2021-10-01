@@ -41,10 +41,12 @@ public class Shipment implements FileParser
     public static class MultiDuration{
            public byte bit;
            
-           public MultiDuration(byte... args){
-               for(byte i : args){
-                   this.bit = (byte) (bit | i);
+           public MultiDuration(Duration... args){
+               byte save = 0;
+               for(Duration i : args){
+                   save = (byte) (save | i.bit);
                }
+               this.bit =save;
            }
            
            public boolean isDuration(Duration reference){
@@ -58,5 +60,9 @@ public class Shipment implements FileParser
     
     public boolean read(String content){
         return false;
+    }
+    @Override
+    public Object write() {
+        return null;
     }
 }

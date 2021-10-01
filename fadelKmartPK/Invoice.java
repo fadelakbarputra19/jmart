@@ -37,9 +37,6 @@ public abstract class Invoice extends Recognizable implements FileParser
         super(id);
         this.buyerId = buyerId;
         this.productId = productId;
-        this.date = "date";
-        this.rating = Rating.BAD;
-        this.status = Status.FINISHED;
    }
    
    public abstract double getTotalPay();
