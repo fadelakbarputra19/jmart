@@ -1,5 +1,5 @@
 package fadelKmartPK;
-
+import java.util.Date;
 
 /**
  * Write a description of class Complaint here.
@@ -9,12 +9,13 @@ package fadelKmartPK;
  */
 public class Complaint extends Recognizable implements FileParser
 {
-    public String date = "Sabtu";
+    public Date date;
     public String desc;
     
     public Complaint(int id, String desc){
         super(id);
         this.desc = desc;
+        date = new Date();
     }
     
     public boolean read(String content){
