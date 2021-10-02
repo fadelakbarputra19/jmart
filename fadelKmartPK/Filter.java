@@ -8,11 +8,14 @@ public class Filter {
         for(PriceTag i : list){
             if(less && i.getAdjustedPrice() < value){
                 x.add(i);
+                
             }
             else{
                 x.add(null);
+                
             }
         }
+        return x;
     }
     public void filterProductRating(ArrayList<ProductRating> list, double value, boolean less){
       
