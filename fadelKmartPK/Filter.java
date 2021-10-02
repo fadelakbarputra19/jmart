@@ -9,6 +9,9 @@ public class Filter {
             if(less && i.getAdjustedPrice() < value){
                 x.add(i);
             }
+            else{
+                x.add(null);
+            }
         }
         return null;
     }
