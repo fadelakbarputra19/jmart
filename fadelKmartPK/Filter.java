@@ -13,7 +13,6 @@ public class Filter {
                 x.add(null);
             }
         }
-        return null;
     }
     public void filterProductRating(ArrayList<ProductRating> list, double value, boolean less){
       
