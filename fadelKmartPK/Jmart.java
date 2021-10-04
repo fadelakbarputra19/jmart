@@ -19,7 +19,6 @@ public class Jmart
     public static void main(String[] args)
     {   
         Account account1 = new Account(99, "Fadel", "fadelakbarputra12@gmail.com", "*goAguaL2");
-        account1.toString();
     }
 }  
   

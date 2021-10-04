@@ -5,13 +5,13 @@ import java.util.ArrayList;
 /**
  * Write a description of class Invoice here.
  *
- * @author (your name)
+ * @author 
  * @version (a version number or a date)
  */
 public abstract class Invoice extends Recognizable implements FileParser
 {
     public ArrayList<Record> history = new ArrayList<Record>();
-    
+
    enum Status{
        WAITING_CONFIRMATION,
        CANCELLED,
