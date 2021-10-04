@@ -17,7 +17,7 @@ public class Filter {
         }
         return x;
     }
-    public void filterProductRating(ArrayList<ProductRating> list, double value, boolean less){
-      
+    public static void filterProductRating(ArrayList<ProductRating> list, double value, boolean less){
+        
     }
 }
