@@ -30,7 +30,5 @@ public class Complaint extends Recognizable implements FileParser
         return false;
     }
 
-    public Object write(){
-        return null;
-    }
+   
 }

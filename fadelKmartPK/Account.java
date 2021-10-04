@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 /**
  * Write a description of class Account here.
  *
- * @author (your name)
+ * @author 
  * @version (a version number or a date)
  */
 public class Account extends Recognizable implements FileParser
@@ -39,12 +39,6 @@ public class Account extends Recognizable implements FileParser
     public boolean read(String content){
         return true;
     }
-    
-    public String toString(){
-        return "name: " + name + "\nemail: " + email + "\npassword: " + password;
-    }
 
-    public Object write(){
-        return null;
-    }
+
 }
