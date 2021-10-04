@@ -9,8 +9,6 @@ package fadelKmartPK;
  */
 public class Product extends Recognizable implements FileParser
 {
-    private static int idCounter = 0;
-    
     public int storeId;
     public String name;
     public int weight;

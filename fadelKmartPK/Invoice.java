@@ -1,5 +1,6 @@
 package fadelKmartPK;
-
+import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * Write a description of class Invoice here.
@@ -9,6 +10,8 @@ package fadelKmartPK;
  */
 public abstract class Invoice extends Recognizable implements FileParser
 {
+    public ArrayList<Record> history = new ArrayList<Record>();
+    
    enum Status{
        WAITING_CONFIRMATION,
        CANCELLED,
@@ -26,6 +29,12 @@ public abstract class Invoice extends Recognizable implements FileParser
        GOOD;
    }
    
+   public class Record{
+        public Status status;
+        public Date date;
+        public String message;
+   }
+
    public String date;
    public int buyerId;
    public int productId;

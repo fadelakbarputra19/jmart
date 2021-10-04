@@ -18,6 +18,14 @@ public class Filter {
         return x;
     }
     public static void filterProductRating(ArrayList<ProductRating> list, double value, boolean less){
+        for (int i = 0; i < list.size(); ++i) 
+        {
+            final ProductRating x = list.get(i);
+            if (less && x.getAverage() < value || !less && x.getAverage() >= value)
+            {
+                list.remove(i);
+            }
+        }
         
     }
 }
