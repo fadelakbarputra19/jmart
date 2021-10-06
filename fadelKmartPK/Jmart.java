@@ -1,7 +1,7 @@
 package fadelKmartPK;
 
-import javax.sound.sampled.EnumControl.Type;
-import java.util.regex.*;
+
+
 /**
  * <h1>JMart Program<h1>
  *
@@ -18,7 +18,9 @@ public class Jmart
     */
     public static void main(String[] args)
     {   
-        Account account1 = new Account(99, "Fadel", "fadelakbarputra12@gmail.com", "*goAguaL2");
+        System.out.println("Hello from Eclipse!");
+        
+        
     }
 }  
   
