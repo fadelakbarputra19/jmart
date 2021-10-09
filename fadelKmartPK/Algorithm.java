@@ -8,12 +8,12 @@ public class Algorithm {
  
     
  public static <T> int count(T[] array,T value){
- 	final Iterator<T> a = Arrays.stream(array).iterator();
- 	return count(a, value);
+ 	final Iterator<T> it = Arrays.stream(array).iterator();
+ 	return count(it, value);
   }
   public static <T> int count(Iterable<T> iterable, T value){
-	  final Iterator <T> a = iterable.iterator();
-	  return count(a, value);
+	  final Iterator <T> it = iterable.iterator();
+	  return count(it, value);
   }
   public static <T> int count(Iterator<T> iterator, T value){
 	  int counter = 0;
@@ -25,64 +25,96 @@ public class Algorithm {
 	  return counter;
   }
   public static <T> int count(T[] array, Predicate<T> pred){
-	  final Iterator<T> a = Arrays.stream(array).iterator();
-	  return count(a, pred);
+	  final Iterator<T> it = Arrays.stream(array).iterator();
+	  return count(it, pred);
   }
  public static <T> int count(Iterable<T> iterable, Predicate<T> pred){
-  final Iterator<T> a = iterable.iterator();
-  return count(a, pred);
+  final Iterator<T> it = iterable.iterator();
+  return count(it, pred);
  }
  public static <T> int count(Iterator<T> iterator, Predicate<T> pred){
-  return 0;
+	 int counter = 0;
+     if (pred.equals(false)) {
+         return 0;
+     }else{
+         while (iterator.hasNext()){
+             counter++;
+         }
+     }
+     return counter;
  }
- 
- 
  public static <T> boolean exists(T[] array, T value) {
-  final Iterator<T> a = Arrays.stream(array).iterator();
-  return exists(a, value);
+  final Iterator<T> it = Arrays.stream(array).iterator();
+  return exists(it, value);
  }
  public static <T> boolean exists(Iterable<T> iterable, T value){
-  final Iterator<T> a = iterable.iterator();
-  return exists(a, value);
+  final Iterator<T> it = iterable.iterator();
+  return exists(it, value);
  }
  public static <T> boolean exists(Iterator<T> iterator, T value){
-  return false;
+	 while (iterator.hasNext()){
+         if (iterator.next().equals(value)){
+             return true;
+         }
+     }
+     return false;
  }
  public static <T> boolean exists(T[] array, Predicate<T> pred){
-  return false;
+	 for (T a : array){
+         if(a.equals(pred)){
+             return true;
+         }
+     }
+     return false;
  }
  public static <T> boolean exists(Iterable<T> iterable, Predicate<T> pred){
-  final Iterator <T> a = iterable.iterator();
-  return exists(a, pred);
+  final Iterator <T> it = iterable.iterator();
+  return exists(it, pred);
  }
  public static <T> boolean exists(Iterator<T> iterator, Predicate<T> pred){
-  return false;
+	 while (iterator.hasNext()){
+         if (iterator.next().equals(pred)){
+             return true;
+         }
+     }
+     return false;
  }
- 
- 
  public static <T> T find(T[] array, T value) {
-  final Iterator<T> a = Arrays.stream(array).iterator();
-  return find(a, value);
+  final Iterator<T> it = Arrays.stream(array).iterator();
+  return find(it, value);
  }
  public static <T> T find(Iterable<T> iterable, T value) {
-  final Iterator <T> a = iterable.iterator();
-  return find(a, value);
+  final Iterator <T> it = iterable.iterator();
+  return find(it, value);
  }
  public static <T> T find(Iterator<T> iterator, T value) {
-  return null;
+	 while (iterator.hasNext()){
+         if(iterator.next().equals(value)){
+             return iterator.next();
+         }
+     }
+     return null;
  }
  public static <T> T find(T[] array, Predicate<T> pred) {
-  return null;
+	 for (T a : array){
+         if(a.equals(pred)){
+             return a;
+         }
+     }
+     return null;
  }
  public static <T> T find(Iterable<T> iterable, Predicate<T> pred) {
-  final Iterator <T> a = iterable.iterator();
-  return find(a, pred);
+  final Iterator <T> it = iterable.iterator();
+  return find(it, pred);
  }
  public static <T> T find(Iterator<T> iterator, Predicate<T> pred) {
-  return null;
+	 while (iterator.hasNext()){
+         if(iterator.next().equals(pred)){
+             return iterator.next();
+         }
+     }
+     return null;
  }
- 
- 
  public static <T> T max(T first, T second) {
   return null;
  }
