@@ -8,13 +8,13 @@ import java.text.SimpleDateFormat;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Complaint extends Recognizable implements FileParser
+public class Complaint extends Recognizable  
 {
     public Date date;
     public String desc;
     
     public Complaint(int id, String desc){
-        super(id);
+    	
         this.desc = desc;
         date = new Date();
     }

@@ -7,7 +7,7 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable implements FileParser
+public class Product extends Recognizable
 {
     public int storeId;
     public String name;
@@ -20,7 +20,6 @@ public class Product extends Recognizable implements FileParser
     
     public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
     {
-        super(id);
         this.storeId = storeId;
         this.name = name;
         this.weight = weight;
@@ -30,12 +29,6 @@ public class Product extends Recognizable implements FileParser
         this.rating= new ProductRating();
         this.multiDuration = multiDuration;
     }
-    
-    @Override
-    public boolean read(String content){
-        return false;
-    }
-    
    public String toString(){
         return "name: " + this.name + "\nweight: " + this.weight + "\nconditionUsed: " + this.conditionUsed + "\npriceTag: " + this.priceTag + "\nCategory: " + this.category + "\nRating: " + this.rating + "\nstoreId: " + this.storeId;
     }

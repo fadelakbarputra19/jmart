@@ -30,8 +30,5 @@ public class Payment extends Invoice implements Transactor
         return 0.0;
     }
 
-    @Override
-    public Object write() {
-        return null;
-    }
+  
 }

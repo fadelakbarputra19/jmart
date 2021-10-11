@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author 
  * @version (a version number or a date)
  */
-public abstract class Invoice extends Recognizable implements FileParser
+public abstract class Invoice extends Recognizable 
 {
     public ArrayList<Record> history = new ArrayList<Record>();
 
@@ -43,7 +43,6 @@ public abstract class Invoice extends Recognizable implements FileParser
    public Status status;
    
    protected Invoice(int id, int buyerId, int productId){
-        super(id);
         this.buyerId = buyerId;
         this.productId = productId;
    }

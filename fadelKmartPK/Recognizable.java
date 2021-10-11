@@ -7,10 +7,11 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Recognizable implements Comparable<Recognizable>
+public class Recognizable implements Comparable<Recognizable>
 {
   public int id;
   
+ 
   public static <T> int setClosingId(Class<T> clazz, int id) {
 	  if(Class.class.isAssignableFrom(Recognizable.class)) {
 		  return 0;
@@ -29,8 +30,8 @@ public abstract class Recognizable implements Comparable<Recognizable>
 	  }
 }
   
-  protected Recognizable(int id){
-      this.id = id;
+  protected Recognizable(){
+      this.id = 121;
   
   }
   
