@@ -7,7 +7,7 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class PriceTag
+public class Treasury
 {
    public static final double COMMISSION_MULTIPLIER = 0.05;
    public static final double BOTTOM_PRICE = 20000.0;
@@ -15,32 +15,21 @@ public class PriceTag
    public double price;
    public double discount;
    
-   public PriceTag(double price)
-   {    
-       this.price = price;
-       this.discount = 0.0;
-   }
-   
-   public PriceTag(double price, double discount)
-   {    
-        this.price = price;
-        this.discount = discount;
-   }
-   
+  
    /*
     * Method untuk getAdjustedPrice
     */
-   public double getAdjustedPrice()
+   public static double getAdjustedPrice(double price, double discount)
    {
-       return getDiscountedPrice() + getAdminFee();
+       return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
    }
    
    /*
     * Method untuk getAdminFee
     */
-   public double getAdminFee()
+   public static double getAdminFee(double price, double discount)
    {
-       double discountedPrice = getDiscountedPrice();
+       double discountedPrice = getDiscountedPrice(price, discount);
        if (discountedPrice < BOTTOM_PRICE){
         return BOTTOM_FEE;
        } 
@@ -53,7 +42,7 @@ public class PriceTag
    /*
     * Method untuk getDiscountedPrice
     */
-   public double getDiscountedPrice()
+   public static double getDiscountedPrice(double price, double discount)
    {
        if(discount >= 100.0)
        {

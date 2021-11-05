@@ -1,16 +1,10 @@
 #BlueJ class context
 comment0.target=Store
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Store\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=accountId\ name\ address\ number
-comment1.target=Store(int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment2.params=account\ name\ address\ number
-comment2.target=Store(Account,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment3.params=content
-comment3.target=boolean\ read(java.lang.String)
-comment4.params=
-comment4.target=java.lang.String\ toString()
-comment5.params=
-comment5.target=boolean\ validate()
-comment6.params=
-comment6.target=java.lang.Object\ write()
-numComments=7
+comment1.params=name\ address\ phoneNumber\ balance
+comment1.target=Store(java.lang.String,\ java.lang.String,\ java.lang.String,\ double)
+comment2.params=
+comment2.target=boolean\ validate()
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

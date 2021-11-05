@@ -9,28 +9,27 @@ package fadelKmartPK;
  */
 public class Product extends Recognizable
 {
-    public int storeId;
-    public String name;
-    public int weight;
-    public boolean conditionUsed;
-    public PriceTag priceTag;
+    public int accountId;
     public ProductCategory category;
-    public ProductRating rating;
-    public Shipment.MultiDuration multiDuration;
-    
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration)
+    public boolean conditionUsed;
+    public double discount;
+    public String name;
+    public double price;
+    public byte shipmentPlans;
+    public int weight;
+   
+    public Product(int id, int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
     {
-        this.storeId = storeId;
+        this.accountId = accountId;
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
+        this.price = price;
+        this.discount = discount;
         this.category = category;
-        this.rating= new ProductRating();
-        this.multiDuration = multiDuration;
     }
-   public String toString(){
-        return "name: " + this.name + "\nweight: " + this.weight + "\nconditionUsed: " + this.conditionUsed + "\npriceTag: " + this.priceTag + "\nCategory: " + this.category + "\nRating: " + this.rating + "\nstoreId: " + this.storeId;
+   public String toString(){ 
+        return "name: " + this.name + "\nweight: " + this.weight + "\nconditionUsed: " + this.conditionUsed + "\nprice: " + this.price + "\ndiscount: " + this.discount + "\naccountId: " + this.accountId;
     }
 }
 

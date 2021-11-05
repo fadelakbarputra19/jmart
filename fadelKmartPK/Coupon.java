@@ -7,7 +7,8 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Coupon extends Recognizable 
+public class Coupon extends Recognizable{
+
    public final String name;
    public final int code;
    public final double cut;
@@ -15,7 +16,7 @@ public class Coupon extends Recognizable
    public final double minimum;
    private boolean used;
        
-   public Coupon (int id, String name, int code, Type type, double cut, double minimum)
+   public Coupon (String name, int code, Type type, double cut, double minimum)
    {    
        
        this.name = name;
@@ -36,9 +37,9 @@ public class Coupon extends Recognizable
        return used;
    }
    
-   public boolean canApply(PriceTag priceTag)
+   public boolean canApply(Treasury priceTag)
    {
-        if(priceTag.getAdjustedPrice() >= minimum && used == false)
+        if(Treasury.getAdjustedPrice(priceTag.price, priceTag.discount) >= minimum && used == false)
         {
             return true;
         }
@@ -47,16 +48,16 @@ public class Coupon extends Recognizable
         }
    }
    
-   public double apply(PriceTag priceTag)
+   public double apply(Treasury priceTag)
    {
         used = true;
         if (type == Type.DISCOUNT)
         {
-            return (priceTag.getAdjustedPrice() * ((100 - cut) / 100));
+            return (Treasury.getAdjustedPrice(priceTag.price, priceTag.discount) * ((100 - cut) / 100));
         }
         else
         {
-            return (priceTag.getAdjustedPrice() - cut);   
+            return (Treasury.getAdjustedPrice(priceTag.price, priceTag.discount) - cut);   
         }
           
     }

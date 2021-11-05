@@ -1,10 +1,16 @@
 #BlueJ class context
 comment0.target=Recognizable
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Recognizable\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=id
-comment1.target=Recognizable(int)
-comment2.params=object
-comment2.target=boolean\ equals(java.lang.Object)
-comment3.params=recognizable
-comment3.target=boolean\ equals(Recognizable)
-numComments=4
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Recognizable\ here.\r\n\r\n\ @author\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=clazz\ id
+comment1.target=int\ setClosingId(java.lang.Class,\ int)
+comment2.params=clazz
+comment2.target=int\ getClosingId(java.lang.Class)
+comment3.params=
+comment3.target=Recognizable()
+comment4.params=object
+comment4.target=boolean\ equals(java.lang.Object)
+comment5.params=recognizable
+comment5.target=boolean\ equals(Recognizable)
+comment6.params=other
+comment6.target=int\ compareTo(Recognizable)
+numComments=7

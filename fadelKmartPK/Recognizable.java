@@ -4,7 +4,7 @@ package fadelKmartPK;
 /**
  * Write a description of class Recognizable here.
  *
- * @author (your name)
+ * @author 
  * @version (a version number or a date)
  */
 public class Recognizable implements Comparable<Recognizable>
