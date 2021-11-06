@@ -2,7 +2,7 @@ package fadelKmartPK;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.*;
 
@@ -15,33 +15,47 @@ import com.google.gson.*;
  */
 public class Jmart
 {
-    class Country
-    {
-    	public String name;
-    	public int population;
-    	public List<String> listOfStates;
+	public static List<Product> filterByPrice(List<Product> list, double minPrice, double maxPrice){
+		List<Product> resList = new ArrayList<Product>();
+		for (Product product : resList) {
+			if(minPrice <= 0.0 && product.price < minPrice) {
+				continue;
+			}
+			if(maxPrice <= 0.0 && product.price > maxPrice) {
+				continue;
+			}
+			resList.add(product);
+		}
+		return resList;
+	}
+	public static List<Product> filterByCategory(List<Product> list, ProductCategory category){
+		return new ArrayList<Product>();
+	}
+
+	public static List<Product> read(String filepath){
+		Gson gson = new Gson();
+		try { 
+			BufferedReader bReader = new BufferedReader(new FileReader(filepath)); 
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<Product>();
+	}
+	
+    public static void main(String[] args){
+    	System.out.println("payment id" + new Payment(-1, -1, null, -1).id);
+        System.out.println("payment id" + new Payment(-1, -1, null, -1).id);
+        System.out.println("payment id" + new Payment(-1, -1, null, -1).id);
+    	try {
+			List<Product> list = read("D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Code Praktikum\\jmart\\lib\\randomProductList.json"); 
+			List<Product> filteredList = filterByPrice(list, 0.0, 20000.0);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
     }
-    
-    
-    /**
-    * Main 
-    */
-    public static void main(String[] args)
-    {   
+       
    
-        String filepath = "D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Code Praktikum\\jmart\\lib\\city.json"; 
-        Gson gson = new Gson();
-        try {
-        	BufferedReader br = new BufferedReader(new FileReader(filepath));
-        	Country  input = gson.fromJson(br, Country.class);
-        	System.out.println("name: " + input.name);
-        	System.out.println("population: " + input.population);
-        	System.out.println("states:");
-        	input.listOfStates.forEach(State -> System.out.println(State));
-        }
-       catch (IOException e){
-    	   e.printStackTrace();
-       }
-    }
+        
 }  
   

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author 
  * @version (a version number or a date)
  */
-public abstract class Invoice extends Recognizable 
+public abstract class Invoice extends Serializable 
 {
     public ArrayList<Record> history = new ArrayList<Record>();
 
@@ -35,21 +35,24 @@ public abstract class Invoice extends Recognizable
         public String message;
    }
 
-   public String date;
+   public Date date;
    public int buyerId;
    public int productId;
    public int complaintId;
    public Rating rating;
    public Status status;
    
-   protected Invoice(int id, int buyerId, int productId){
-        this.buyerId = buyerId;
-        this.productId = productId;
+   protected Invoice(int buyerId, int productId){
+	   this.buyerId = buyerId;
+       this.productId = productId;
+       System.out.println(date.toString());
+       this.complaintId = -1;
+       this.date = new Date();
+       rating = Rating.NONE;
+       status = Status.WAITING_CONFIRMATION;
    }
    
    public abstract double getTotalPay();
    
-   public boolean read(String content){
-       return false;
-   }
+  
 }

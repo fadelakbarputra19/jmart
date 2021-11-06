@@ -9,23 +9,16 @@ package fadelKmartPK;
  */
 public class Payment extends Invoice
 {
-   public int productId;
+   public int productCount;
    public Shipment shipment;
    
-   public Payment(int id, int buyerId, int storeId, int productId, Shipment shipment){
-        super(id, buyerId, storeId);
+   public Payment(int buyerId, int productId, Shipment shipment, int productCount){
+        super(buyerId, productId);
         this.productId = productId;
         this.shipment = shipment;
+        this.productCount = productCount;
    }
    
-   public boolean validate(){
-        return false;
-    }
-    
-    public Invoice perform(){
-        return null;
-    }
-    
     public  double getTotalPay(){
         return 0.0;
     }

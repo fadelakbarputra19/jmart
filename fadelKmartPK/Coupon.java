@@ -1,5 +1,5 @@
 package fadelKmartPK;
-
+import fadelKmartPK.Treasury;
 
 /**
  * Write a description of class Coupon here.
@@ -7,7 +7,7 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Coupon extends Recognizable{
+public class Coupon extends Serializable{
 
    public final String name;
    public final int code;
@@ -37,9 +37,9 @@ public class Coupon extends Recognizable{
        return used;
    }
    
-   public boolean canApply(Treasury priceTag)
+   public boolean canApply(double price, double discount)
    {
-        if(Treasury.getAdjustedPrice(priceTag.price, priceTag.discount) >= minimum && used == false)
+        if(Treasury.getAdjustedPrice(price, discount) >= minimum && used == false)
         {
             return true;
         }
@@ -48,16 +48,16 @@ public class Coupon extends Recognizable{
         }
    }
    
-   public double apply(Treasury priceTag)
+   public double apply(double price, double discount)
    {
         used = true;
         if (type == Type.DISCOUNT)
         {
-            return (Treasury.getAdjustedPrice(priceTag.price, priceTag.discount) * ((100 - cut) / 100));
+            return (Treasury.getAdjustedPrice(price, discount) * ((100 - cut) / 100));
         }
         else
         {
-            return (Treasury.getAdjustedPrice(priceTag.price, priceTag.discount) - cut);   
+            return (Treasury.getAdjustedPrice(price, discount) - cut);   
         }
           
     }

@@ -7,7 +7,7 @@ package fadelKmartPK;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable
+public class Product extends Serializable
 {
     public int accountId;
     public ProductCategory category;
@@ -27,9 +27,10 @@ public class Product extends Recognizable
         this.price = price;
         this.discount = discount;
         this.category = category;
+        this.shipmentPlans = shipmentPlans;
     }
    public String toString(){ 
-        return "name: " + this.name + "\nweight: " + this.weight + "\nconditionUsed: " + this.conditionUsed + "\nprice: " + this.price + "\ndiscount: " + this.discount + "\naccountId: " + this.accountId;
+        return "name: " + this.name + "\nweight: " + this.weight + "\nconditionUsed: " + this.conditionUsed + "\nprice: " + this.price + "\ndiscount: " + this.discount + "\naccountId: " + this.accountId + "\nshipmentPlans: " + this.shipmentPlans;
     }
 }
 
