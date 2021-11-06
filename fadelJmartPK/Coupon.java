@@ -1,5 +1,5 @@
-package fadelKmartPK;
-import fadelKmartPK.Treasury;
+package fadelJmartPK;
+import fadelJmartPK.Treasury;
 
 /**
  * Write a description of class Coupon here.

@@ -1,4 +1,4 @@
-package fadelKmartPK;
+package fadelJmartPK;
 
 public class Pair<T, U> {
 	public T first;
