@@ -50,6 +50,7 @@ public class Jmart
     	try {
 			List<Product> list = read("D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Code Praktikum\\jmart\\lib\\randomProductList.json"); 
 			List<Product> filteredList = filterByPrice(list, 0.0, 20000.0);
+			filteredList.forEach(product -> System.out.println(product.price));
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
