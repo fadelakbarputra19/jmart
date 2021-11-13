@@ -9,44 +9,37 @@ import java.util.Map;
  * @author 
  * @version (a version number or a date)
  */
-public abstract class Serializable implements Comparable<Serializable>
+public class Serializable implements Comparable<Serializable>
 {
     public final int id;
-    private static Map<Class<?>, Integer> mapCounter;
     
-    protected Serializable()
-    {
-    	Integer counter = mapCounter.get(getClass());
-    	counter = counter == null ? 0 : counter + 1;
-    	mapCounter.put(getClass(), counter);
-    	this.id = counter;
+    private static HashMap<Class<?>, Integer> mapCounter = new HashMap<Class<?>, Integer>();
+
+    protected Serializable() {
+        Integer counter = mapCounter.get(getClass());
+        counter = counter == null ? 0 : counter + 1;
+        mapCounter.put(getClass(), counter);
+        this.id = counter;
+    }
+        
+    public static <T> int getClosingId(Class<T> clazz){
+        return mapCounter.get(clazz);
     }
 
-    public int compareTo(Serializable other) {
-        return other.id/this.id;
+    public static <T> int setClosing(Class<T> clazz, int id){
+        return mapCounter.put(clazz, id);
     }
-    
+
     public boolean equals(Object other) {
-        if(!(other instanceof Serializable)){
-            Serializable checked = (Serializable)other;
-            if(checked.id == this.id){
-                return true;
-            }
-        }
-        return false;
+        return (other instanceof Serializable) && ((Serializable) other).id == id;
     }
+
     public boolean equals(Serializable other) {
-        if(this.id == other.id){
-            return true;
-        }
-        return false;
+        return other.id == id;
     }
 
-    public Integer getClosingId(Class<Serializable>clazz){
-        return id;
-    }
-
-    public void setClosingId(Class<Serializable>clazz, int id){
-        //this.id = id;
+    @Override
+    public int compareTo(Serializable other) {
+        return Integer.compare(this.id, other.id);
     }
 }

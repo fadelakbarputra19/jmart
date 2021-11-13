@@ -28,10 +28,9 @@ public class JsonTable<T> extends Vector{
 			 if(loaded != null) {
 				 Collections.addAll(this, loaded); 
 			 }
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 			File file = new File(filepath);
 		}
-		 
 	 }
 	public static <T> T readJson(Class <T> clazz, String filepath)throws FileNotFoundException {
 		final JsonReader bacaJsonReader = new JsonReader(new FileReader(filepath));
