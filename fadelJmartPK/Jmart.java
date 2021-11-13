@@ -56,24 +56,25 @@ public class Jmart
 		 Predicate<Product> predicate = temp -> (temp.accountId == accountId);
 	        return paginate(list, page, pageSize, predicate);
 	}
-	public static List<Product> filterByName(List<Product> list, int accountId, int page, int pageSize, String search){
-		Predicate<Product> predicate = tempName -> (tempName.name.toLowerCase().contains(search.toLowerCase()));
+	public static List<Product> filterByName(List<Product> list, String search, int page, int pageSize){
+        Predicate<Product> predicate = tempName -> (tempName.name.toLowerCase().contains(search.toLowerCase()));
         return paginate(list, page, pageSize, predicate);
-	}
-    public static void main(String[] args){
-    	System.out.println("payment id" + new Payment(-1, -1, null, -1).id);
-        System.out.println("payment id" + new Payment(-1, -1, null, -1).id);
-        System.out.println("payment id" + new Payment(-1, -1, null, -1).id);
+    }
+    @SuppressWarnings("unchecked")
+	public static void main(String[] args){
+    	
     	try {
-			List<Product> list = read("D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Code Praktikum\\jmart\\lib\\randomProductList.json"); 
-			List<Product> filteredList = filterByPrice(list, 0.0, 20000.0);
-			filteredList.forEach(product -> System.out.println(product.price));
-		} catch (Throwable e) {
-			e.printStackTrace();
+			String filepath = "D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Praktikum\\Modul 7\\account.json";
+			
+			JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+			tableAccount.add(new Account("name", "email", "password"));
+			tableAccount.writeJson();
+			
+			tableAccount = new JsonTable<>(Account.class, filepath);
+			tableAccount.forEach(account -> System.out.println(account.toString()));
+		} catch (Throwable t) {
+			t.printStackTrace();
 		}
     }
-       
-   
-        
-}  
+}
   
