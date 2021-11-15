@@ -18,63 +18,48 @@ import com.google.gson.reflect.TypeToken;
  */
 public class Jmart
 {
-	public static List<Product> filterByPrice(List<Product> list, double minPrice, double maxPrice){
-		List<Product> resList = new ArrayList<Product>();
-		for (Product product : resList) {
-			if(minPrice <= 0.0 && product.price < minPrice) {
-				continue;
-			}
-			if(maxPrice <= 0.0 && product.price > maxPrice) {
-				continue;
-			}
-			resList.add(product);
-		}
-		return resList;
-	}
-	public static List<Product> filterByCategory(List<Product> list, ProductCategory category){
-		List<Product> returnList = new ArrayList<Product>();
-        for (Product prod : list) {
-            if (prod.category.equals(category)) {
-                returnList.add(prod);
-            }
+	public static long DELIVERED_LIMIT_MS = 1;
+	public static long ON_DELIVERY_LIMIT_MS = 2;
+	public static long ON_PROGRESS_LIMIT_MS = 3;
+	public static long WAITING_CONF_LIMIT_MS = 4;
+	private static Invoice.Status status;
+    
+	public static boolean paymentTimekeeper(Payment payment){
+        long startTime = System.currentTimeMillis();
+        if(System.currentTimeMillis() - startTime > WAITING_CONF_LIMIT_MS){
+            payment.history.add(new Payment.Record(Invoice.Status.FAILED, "FAILED"));
         }
-        return returnList;
-	}
-
-	public static List<Product> read(String filepath) throws FileNotFoundException{
-		 Gson gson = new Gson();
-	        Type userListType = new TypeToken<ArrayList<Product>>() {
-	        }.getType();
-	        BufferedReader br = new BufferedReader(new FileReader(filepath));
-	        List<Product> returnList = gson.fromJson(br, userListType);
-	        return returnList;
-	}
-	private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred){
-		return list.stream().filter(temp -> pred.predicate(temp)).skip(page * pageSize).limit(pageSize).collect(Collectors.toList());
-	}
-	public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize){
-		 Predicate<Product> predicate = temp -> (temp.accountId == accountId);
-	        return paginate(list, page, pageSize, predicate);
-	}
-	public static List<Product> filterByName(List<Product> list, String search, int page, int pageSize){
-        Predicate<Product> predicate = tempName -> (tempName.name.toLowerCase().contains(search.toLowerCase()));
-        return paginate(list, page, pageSize, predicate);
+        else if(System.currentTimeMillis() - startTime > ON_PROGRESS_LIMIT_MS) {
+            payment.history.add(new Payment.Record(Invoice.Status.FAILED, "FAILED"));
+        }
+        else if(System.currentTimeMillis() - startTime > ON_DELIVERY_LIMIT_MS) {
+            payment.history.add(new Payment.Record(Invoice.Status.ON_DELIVERY, "ON_DELIVERY"));
+        }
+        else if(System.currentTimeMillis() - startTime > DELIVERED_LIMIT_MS) {
+            payment.history.add(new Payment.Record(Invoice.Status.FINISHED, "DELIVERED"));
+            return true;
+        }
+        return false;
     }
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args){
-    	
     	try {
-			String filepath = "D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Praktikum\\Modul 7\\account.json";
-			
-			JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
-			tableAccount.add(new Account("name", "email", "password"));
-			tableAccount.writeJson();
-			
-			tableAccount = new JsonTable<>(Account.class, filepath);
-			tableAccount.forEach(account -> System.out.println(account.toString()));
-		} catch (Throwable t) {
-			t.printStackTrace();
+			JsonTable<Payment> table = new JsonTable<>(Payment.class, "D:\\Materi Teknik Komputer\\Semester 3\\OOP\\Praktikum\\Modul 7\\randomPaymentList.json");
+			ObjectPoolThread<Payment> paymentPool = new ObjectPoolThread<Payment>("Thread-PP", Jmart::paymentTimekeeper);
+			 paymentPool.start();
+	            table.forEach(payment -> paymentPool.add((Payment) payment));
+	            while (paymentPool.size() != 0);
+	            paymentPool.exit();
+	            while (paymentPool.isAlive());
+	            System.out.println("Thread exit successfully");
+	            Gson gson = new Gson();
+	            table.forEach(payment -> {
+	                String history = gson.toJson(payment);
+	                System.out.println(history);
+	            });
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-    }
+	}
 }
   

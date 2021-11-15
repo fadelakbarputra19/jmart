@@ -1,6 +1,8 @@
 package fadelJmartPK;
 
 
+import java.util.ArrayList;
+import java.util.Date;
 /**
  * Write a description of class Payment here.
  *
@@ -9,19 +11,30 @@ package fadelJmartPK;
  */
 public class Payment extends Invoice
 {
-   public int productCount;
-   public Shipment shipment;
-   
-   public Payment(int buyerId, int productId, Shipment shipment, int productCount){
+    ArrayList<Record> history = new ArrayList<Record>();
+    public int productCount;
+    public Shipment shipment;
+
+    public Payment(int buyerId, int productId, int productCount, Shipment shipment){
         super(buyerId, productId);
+        this.productCount = productCount;
         this.productId = productId;
         this.shipment = shipment;
-        this.productCount = productCount;
-   }
-   
-    public  double getTotalPay(){
-        return 0.0;
+    }
+    
+    public double getTotalPay(Product product){
+        return product.price * product.discount;
     }
 
-  
+    public static class Record{
+        public Status status;
+        public Date date;
+        public String message;
+
+        public Record(Status status, String message){
+            this.status = status;
+            this.message = message;
+            this.date = java.util.Calendar.getInstance().getTime();
+        }
+    }
 }

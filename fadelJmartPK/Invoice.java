@@ -10,7 +10,21 @@ import java.util.ArrayList;
  */
 public abstract class Invoice extends Serializable 
 {
-    public ArrayList<Record> history = new ArrayList<Record>();
+	public int buyerId;
+	public int complaintId;
+	public final Date date;
+	public int productId;
+	public Rating rating;
+	   
+	protected Invoice(int buyerId, int productId){
+		this.buyerId = buyerId;
+		this.productId = productId;
+		this.complaintId = -1;
+		this.date = new Date();
+		rating = Rating.NONE;
+	}
+	
+	public abstract double getTotalPay(Product product);
 
    enum Status{
        WAITING_CONFIRMATION,
@@ -27,32 +41,6 @@ public abstract class Invoice extends Serializable
        BAD,
        NEUTRAL,
        GOOD;
-   }
-   
-   public class Record{
-        public Status status;
-        public Date date;
-        public String message;
-   }
-
-   public Date date;
-   public int buyerId;
-   public int productId;
-   public int complaintId;
-   public Rating rating;
-   public Status status;
-   
-   protected Invoice(int buyerId, int productId){
-	   this.buyerId = buyerId;
-       this.productId = productId;
-       System.out.println(date.toString());
-       this.complaintId = -1;
-       this.date = new Date();
-       rating = Rating.NONE;
-       status = Status.WAITING_CONFIRMATION;
-   }
-   
-   public abstract double getTotalPay();
-   
+   }  
   
 }
