@@ -24,23 +24,31 @@ public class ObjectPoolThread<T> extends Thread{
 		exitSignal = true;
 	}
 	@ Override
-	 public void run(){
+	public void run ()
+    {
         exitSignal = false;
-        boolean test;
-        for(T object : this.objectPool) {
-            test = routine.apply(object);
-            if (!test) this.objectPool.add(object);
-            while(this.objectPool == null){
-                try {
+
+        for(int i = 0; i < this.size(); i++)
+        {
+            T object = objectPool.get(i);
+            boolean temp = routine.apply(object);
+            if(!temp) this.objectPool.add(object);
+            while(this.objectPool == null)
+            {
+                try{
                     routine.wait();
-                } catch (InterruptedException e) {
+                }
+                catch (InterruptedException e)
+                {
                     e.printStackTrace();
                 }
             }
-            if(exitSignal){
+            if(exitSignal)
+            {
                 break;
             }
         }
+
     }
 	public int size() {
 		return objectPool.size();
