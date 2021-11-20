@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import org.springframework.web.bind.annotation.*;
 import static org.apache.logging.log4j.util.Strings.isBlank;
+
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController {
@@ -19,7 +20,7 @@ public class AccountController implements BasicGetController {
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
     public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
     public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
-    @JsonAutowired(value = Account.class,filepath = "akun.json")
+    @JsonAutowired(value = Account.class,filepath = "account.json")
     public static JsonTable<Account> accountTable;
 
     @PostMapping("/login")
@@ -70,6 +71,22 @@ public class AccountController implements BasicGetController {
         return null;
     }
 
+    @PostMapping("/{id}/topUp")
+    boolean topUp
+            (
+                    @RequestParam int id,
+                    @RequestParam double balance
+            )
+    {
+        for(Account data : accountTable){
+            if(data.id == id) {
+                data.balance += balance;
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public Serializable getById(int id) {
         return (Serializable) BasicGetController.super.getById(id);
@@ -78,7 +95,7 @@ public class AccountController implements BasicGetController {
     @SuppressWarnings("rawtypes")
 	@Override
     public JsonTable getJsonTable() {
-      return  accountTable;
+        return null;
     }
 
     @SuppressWarnings("rawtypes")
