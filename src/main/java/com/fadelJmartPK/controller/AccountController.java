@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 import org.springframework.web.bind.annotation.*;
 import static org.apache.logging.log4j.util.Strings.isBlank;
 
+@SuppressWarnings("rawtypes")
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController {
@@ -95,7 +96,7 @@ public class AccountController implements BasicGetController {
     @SuppressWarnings("rawtypes")
 	@Override
     public JsonTable getJsonTable() {
-        return null;
+        return accountTable;
     }
 
     @SuppressWarnings("rawtypes")
