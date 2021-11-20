@@ -1,5 +1,8 @@
 package com.fadelJmartPK;
 import java.util.Date;
+
+import com.fadelJmartPK.dbjson.Serializable;
+
 import java.text.SimpleDateFormat;
 
 /**

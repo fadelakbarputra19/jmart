@@ -1,5 +1,6 @@
 package com.fadelJmartPK;
 
+import com.fadelJmartPK.dbjson.Serializable;
 
 /**
  * Write a description of class Product here.

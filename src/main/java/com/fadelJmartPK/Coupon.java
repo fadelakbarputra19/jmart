@@ -1,5 +1,6 @@
 package com.fadelJmartPK;
 import com.fadelJmartPK.Treasury;
+import com.fadelJmartPK.dbjson.Serializable;
 
 /**
  * Write a description of class Coupon here.
