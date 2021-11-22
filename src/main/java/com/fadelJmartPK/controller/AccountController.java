@@ -1,5 +1,7 @@
 package com.fadelJmartPK.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -14,38 +16,42 @@ import com.fadelJmartPK.Account;
 import com.fadelJmartPK.Store;
 import com.fadelJmartPK.dbjson.JsonAutowired;
 import com.fadelJmartPK.dbjson.JsonTable;
+import com.fadelJmartPK.dbjson.Serializable;
 
 import ch.qos.logback.core.boolex.Matcher;
 
 @RestController
 @RequestMapping("/account")
-public class AccountController implements BasicGetController<Account>
-{
-    public static final String REGEX_EMAIL = "^\\w+([.&`~-]?\\w+)*@\\w+([.-]?\\w+)+$";
+public class AccountController implements BasicGetController {
+    public static final String REGEX_EMAIL = "^\\w+([\\.&`~-]?\\w+)*@\\w+([\\.-]?\\w+)+$";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
     public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
     public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
-    @JsonAutowired(value = Account.class,filepath = "Account.json")
+    @JsonAutowired(value = Account.class,filepath = "akun.json")
     public static JsonTable<Account> accountTable;
 
-    @GetMapping
-    String index() { return "account page"; }
-
-    @Override
-    public JsonTable<Account> getJsonTable() {
-        return accountTable;
-    }
-
     @PostMapping("/login")
-    @ResponseBody Account login
+    Account login
             (
                     @RequestParam String email,
                     @RequestParam String password
             )
     {
-        for (Account each : accountTable){
-            if(each.email.equals(email) && each.password.equals(password)){
-                return each;
+        for (Account data : accountTable){
+            try{
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.update(password.getBytes());
+                byte[] bytes = md.digest();
+                StringBuilder sb = new StringBuilder();
+                for(int i = 0; i < bytes.length; i++){
+                    sb.append(Integer.toString((bytes[i] & 0xff) + 0x100,16).substring(1));
+                }
+                password = sb.toString();
+            }catch (NoSuchAlgorithmException e){
+                e.printStackTrace();
+            }
+            if(data.email.equals(email) && data.password.equals(password)){
+                return data;
             }
         }
         return null;
@@ -62,6 +68,18 @@ public class AccountController implements BasicGetController<Account>
 
         boolean hasilEmail = REGEX_PATTERN_EMAIL.matcher(email).find();
         boolean hasilPassword = REGEX_PATTERN_PASSWORD.matcher(password).find();
+        try{
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < bytes.length; i++){
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100,16).substring(1));
+            }
+            password = sb.toString();
+        }catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
         if(!name.isBlank() || hasilEmail || hasilPassword ||
                 accountTable.stream().anyMatch(account -> account.email.equals(email))){
             Account account =  new Account(name, email, password, 0);
@@ -72,18 +90,18 @@ public class AccountController implements BasicGetController<Account>
     }
 
     @PostMapping("/{id}/registerStore")
-    Store registerStore
+    Store register
             (
-                    @RequestParam String id,
+                    @RequestParam int id,
                     @RequestParam String name,
                     @RequestParam String address,
                     @RequestParam String phoneNumber
             )
     {
-        for(Account each : accountTable){
-            if (each.store == null){
-                each.store = new Store(phoneNumber, name,address, 0);
-                return each.store;
+        for(Account data : accountTable){
+            if (data.store == null && data.id == id){
+                data.store = new Store(name,address,phoneNumber,0);
+                return data.store;
             }
         }
         return null;
@@ -96,22 +114,29 @@ public class AccountController implements BasicGetController<Account>
                     @RequestParam double balance
             )
     {
-        for(Account each : accountTable){
-            if(each.id == id){
-                each.balance += balance;
+        for(Account data : accountTable){
+            if(data.id == id) {
+                data.balance += balance;
                 return true;
             }
         }
         return false;
     }
 
-    @GetMapping("/{id}")
-    public Account getById(int id) {
-        return getJsonTable().get(id);
+    @Override
+    public Serializable getById(int id) {
+        return BasicGetController.super.getById(id);
     }
 
-    @GetMapping("/page")
-    public List<Account> getPage(int page, int pageSize) {
-        return getJsonTable().subList(page, pageSize);
+    @SuppressWarnings("rawtypes")
+	@Override
+    public JsonTable getJsonTable() {
+        return accountTable;
+    }
+
+    @SuppressWarnings("rawtypes")
+	@Override
+    public List getPage(int page, int pageSize) {
+        return BasicGetController.super.getPage(page, pageSize);
     }
 }

@@ -1,5 +1,5 @@
 package com.fadelJmartPK;
 
-interface Predicate<T> {
-	public boolean predicate(T arg);
+public interface Predicate<T> {
+	 abstract boolean predicate (T arg);
 }
