@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fadelJmartPK.dbjson.JsonTable;
+import com.fadelJmartPK.dbjson.Serializable;
 
-public interface BasicGetController<T> {
+public interface BasicGetController<T extends Serializable> {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/{id}")
-	default T getById(@PathVariable int id) {
+	default Serializable getById(@PathVariable int id) {
 		return (T) getJsonTable().get(id);
 	}
 	public abstract JsonTable<T> getJsonTable();

@@ -16,8 +16,8 @@ import com.google.gson.stream.JsonWriter;
 
 
 
-@SuppressWarnings({ "serial", "rawtypes" })
-public class JsonTable<T> extends Vector{
+//@SuppressWarnings({ "serial", "rawtypes" })
+public class JsonTable<T> extends Vector<T>{
 	private static final Gson gson = new Gson();
     public final String filepath;
     
