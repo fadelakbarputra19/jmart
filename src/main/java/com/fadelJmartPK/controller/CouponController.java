@@ -3,14 +3,18 @@ package com.fadelJmartPK.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fadelJmartPK.Algorithm;
 import com.fadelJmartPK.Coupon;
 import com.fadelJmartPK.Product;
 import com.fadelJmartPK.dbjson.JsonTable;
 
+@RestController
+@RequestMapping("/coupon")
 public class CouponController implements BasicGetController<Coupon>{
 
 	public static JsonTable<Coupon> couponTable;
