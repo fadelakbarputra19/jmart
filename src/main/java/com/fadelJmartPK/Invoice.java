@@ -29,7 +29,7 @@ public abstract class Invoice extends Serializable
 	
 	public abstract double getTotalPay(Product product);
 
-   enum Status{
+   public enum Status{
        WAITING_CONFIRMATION,
        CANCELLED,
        ON_PROGRESS,
