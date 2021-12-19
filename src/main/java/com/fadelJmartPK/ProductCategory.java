@@ -2,10 +2,10 @@ package com.fadelJmartPK;
 
 
 /**
- * Enumeration class ProductCategory - write a description of the enum class here
+ * Enumeration class ProductCategory - Jenis-jenis Product yang ada
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public enum ProductCategory
 {

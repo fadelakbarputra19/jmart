@@ -12,7 +12,10 @@ import com.fadelJmartPK.Algorithm;
 import com.fadelJmartPK.Coupon;
 import com.fadelJmartPK.Product;
 import com.fadelJmartPK.dbjson.JsonTable;
-
+/**
+ * Coupon controller is used to handle request about Coupon class
+ * @author Muhammad Fadel Akbar Putra
+ */
 @RestController
 @RequestMapping("/coupon")
 public class CouponController implements BasicGetController<Coupon>{

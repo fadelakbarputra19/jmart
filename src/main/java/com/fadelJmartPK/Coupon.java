@@ -3,10 +3,10 @@ import com.fadelJmartPK.Treasury;
 import com.fadelJmartPK.dbjson.Serializable;
 
 /**
- * Write a description of class Coupon here.
+ * Coupon digunakan untuk memberikan jenis coupon yang ada dan dapat digunakan jika syarat terpenuhi pada Payment 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class Coupon extends Serializable{
 

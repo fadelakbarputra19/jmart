@@ -1,4 +1,11 @@
 package com.fadelJmartPK;
+/**
+ * 
+ * @author Muhammad Fadel Akbar Putra
+ *
+ * @param <T>
+ * @param <U>
+ */
 
 public class Pair<T, U> {
 	public T first;

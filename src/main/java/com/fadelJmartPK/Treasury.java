@@ -2,10 +2,10 @@ package com.fadelJmartPK;
 
 
 /**
- * Write a description of class PriceTag here.
+ * Treasury digunakan untuk mengecek harga dari product
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class Treasury
 {

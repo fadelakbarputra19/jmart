@@ -5,6 +5,7 @@ import com.fadelJmartPK.ProductCategory;
 import com.fadelJmartPK.dbjson.JsonTable;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -20,7 +21,10 @@ import com.fadelJmartPK.Algorithm;
 import com.fadelJmartPK.Store;
 import com.fadelJmartPK.dbjson.JsonAutowired;
 import com.fadelJmartPK.dbjson.JsonTable;
-
+/**
+ * Product Controller is used to handle product class
+ * @author Muhammad Fadel Akbar Putra
+ */
 @RestController
 @RequestMapping("/product")
 public class ProductController implements BasicGetController<Product>
@@ -42,11 +46,10 @@ public class ProductController implements BasicGetController<Product>
                     @RequestParam int pageSize
             )
     {
-        return Algorithm.paginate(getJsonTable(), page, pageSize,pred->pred.accountId == id);
+        return Algorithm.paginate(productTable, page, pageSize,pred->pred.accountId == id);
     }
 
     @PostMapping("/create")
-    @ResponseBody
     Product create
             (
                     @RequestParam int accountId,
@@ -59,9 +62,9 @@ public class ProductController implements BasicGetController<Product>
                     @RequestParam byte shipmentPlans
             )
     {
-        for(Product each : productTable) {
-            if (each.accountId == accountId){
-                Product product =  new Product(accountId, accountId, name, weight, conditionUsed, price, discount, category, shipmentPlans);
+        for(Account each : AccountController.accountTable) {
+            if (each.id == accountId && each.store != null){
+                Product product =  new Product(accountId, name, weight, conditionUsed, price, discount, category, shipmentPlans);
                 productTable.add(product);
                 return product;
             }
@@ -69,29 +72,20 @@ public class ProductController implements BasicGetController<Product>
         return null;
     }
 
-    @SuppressWarnings("null")
-	@GetMapping("/getFiltered")
+    @GetMapping("/getFiltered")
     @ResponseBody
-    List<Product> getProductByFilter
-            (
-                    @RequestParam int page,
-                    @RequestParam int pageSize,
-                    @RequestParam int accountId,
-                    @RequestParam String search,
-                    @RequestParam int minPrice,
-                    @RequestParam int maxPrice,
-                    @RequestParam ProductCategory category
-            )
-    {
-        List<Product> tempProduct = null;
-        for (Product each : productTable) {
-            if (each.accountId == accountId)
-                if (each.name.contains(search))
-                    if (minPrice <= each.price)
-                        if (maxPrice >= each.price)
-                            if (each.category == category)
-                                tempProduct.add(each);
+    List<Product> getProductByFilter(@RequestParam int page, @RequestParam int pageSize, @RequestParam String search,
+                                     @RequestParam int minPrice, @RequestParam int maxPrice, @RequestParam ProductCategory category,
+                                     @RequestParam boolean conditionUsed) {
+        List<Product> tempProduct = new ArrayList<Product>();
+        for (Product iterate : productTable) {
+            if (iterate.name.contains(search))
+                if (minPrice <= iterate.price)
+                    if (maxPrice >= iterate.price)
+                        if (iterate.category == category)
+                            if (iterate.conditionUsed == conditionUsed)
+                                tempProduct.add(iterate);
         }
-        return tempProduct;
+        return Algorithm.paginate(tempProduct, page, pageSize, pred -> pred.weight != 0);
     }
 }

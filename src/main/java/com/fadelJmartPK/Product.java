@@ -3,10 +3,10 @@ package com.fadelJmartPK;
 import com.fadelJmartPK.dbjson.Serializable;
 
 /**
- * Write a description of class Product here.
+ * Class Product menyediakan detail data untuk tiap product
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class Product extends Serializable
 {
@@ -19,7 +19,7 @@ public class Product extends Serializable
     public byte shipmentPlans;
     public int weight;
    
-    public Product(int id, int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
+    public Product(int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
     {
         this.accountId = accountId;
         this.name = name;

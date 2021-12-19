@@ -2,10 +2,10 @@ package com.fadelJmartPK;
 
 
 /**
- * Write a description of class ProductRating here.
+ * ProcuctRating akan memberikan perhitungan untuk rating product
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class ProductRating
 {

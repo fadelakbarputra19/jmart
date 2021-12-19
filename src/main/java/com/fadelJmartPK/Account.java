@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 import com.fadelJmartPK.dbjson.Serializable;
 
 /**
- * Write a description of class Account here.
+ * Class Account, akan menyimpan data yang dibutuhkan dari user 
  *
- * @author 
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class Account extends Serializable 
 {

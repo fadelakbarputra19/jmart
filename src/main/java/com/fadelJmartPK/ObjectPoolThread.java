@@ -3,6 +3,13 @@ package com.fadelJmartPK;
 import java.util.Vector;
 import java.util.function.Function;
 
+/**
+ * 
+ * @author Muhammad Fadel Akbar Putra
+ *
+ * @param <T> berfungsi supaya setiap class dapat dijalankan dengan thread 
+ */
+
 public class ObjectPoolThread<T> extends Thread{
 	private boolean exitSignal = false;
 	private Vector<T> objectPool;

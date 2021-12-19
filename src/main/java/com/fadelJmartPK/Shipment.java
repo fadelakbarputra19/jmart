@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.Calendar;
 
 /**
- * Write a description of class Shipment here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Shipment memberikan data tentang pengirimaan berdasarkan byte
+ * 
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class Shipment
 {

@@ -6,10 +6,10 @@ import com.fadelJmartPK.dbjson.Serializable;
 import java.text.SimpleDateFormat;
 
 /**
- * Write a description of class Complaint here.
+ * Class Complaint akan meyimpan pesan berisi komplain berdasarkan tanggal
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra
+ * @version 1.0
  */
 public class Complaint extends Serializable  
 {

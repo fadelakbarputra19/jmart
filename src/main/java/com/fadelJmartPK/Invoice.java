@@ -6,10 +6,10 @@ import com.fadelJmartPK.dbjson.Serializable;
 import java.util.ArrayList;
 
 /**
- * Write a description of class Invoice here.
+ * Invoice menyimpan data dan history Payment yang dilakukan
  *
- * @author 
- * @version (a version number or a date)
+ * @author Muhammad Fadel Akbar Putra 
+ * @version 1.0	
  */
 public abstract class Invoice extends Serializable 
 {
